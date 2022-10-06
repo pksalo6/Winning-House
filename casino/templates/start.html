@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Casino
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Fill Your Details to Start the Game</h1>
+    <form action="{% url 'casino:start' %}" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email address" required>
+        <input type="text" name="first_name" placeholder="Enter your first name" required>
+        <input type="text" name="last_name" placeholder="Enter your last name" required>
+        <button type="submit">Start</button>
+    </form>
+</div>
+{% endblock %}

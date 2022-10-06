@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block Casino %}
+Casino
+{% endblock %}
+
+{% block content %}
+<style>
+    .casion_wrapper
+    {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+    }
+    .casino_table
+    {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .casino_table td
+    {
+        padding: 20px 10px;
+    }
+</style>
+<div class="casion_wrapper">
+    <div>
+        <p>User: {{ context.full_name }}</p>    
+        <p>Credits: {{ context.credit }}</p>    
+    </div>
+    <div>
+        <table class="casino_table" border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <th colspan="3">Slots</th>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for value in context.symbols %}
+                        <td>{{ value.upper }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+    <div>
+        <a href="{% url 'casino:roll' %}"><button>Roll</button></a>
+        <a href="{% url 'casino:stop' %}"><button>Cash Out</button></a>
+    </div>
+</div>
+{% endblock %}
